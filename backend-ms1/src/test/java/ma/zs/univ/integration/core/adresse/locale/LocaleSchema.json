@@ -1,0 +1,19 @@
+{
+    "ref": "#string",
+    "libelle": "#string",
+    "complementAdresse": "#string",
+    "dernierAnneeDePaiement": "#number",
+    "dernierTrimestre": "#number",
+    "superficie": "#number",
+    "rue": {"id": "#number"},
+    "categorieLocale": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

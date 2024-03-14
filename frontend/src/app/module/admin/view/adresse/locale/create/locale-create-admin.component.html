@@ -1,0 +1,92 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'locale.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'locale.tabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'locale.ref' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'locale.ref' | translate}}" id="1" [(ngModel)]="item.ref"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validLocaleRef}"  />
+                                                    <small class='p-error' *ngIf='!validLocaleRef'>Ref est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'locale.libelle' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'locale.libelle' | translate}}" id="2" [(ngModel)]="item.libelle"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validLocaleLibelle}"  />
+                                                    <small class='p-error' *ngIf='!validLocaleLibelle'>Libelle est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'locale.complementAdresse' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'locale.complementAdresse' | translate}}" id="3" [(ngModel)]="item.complementAdresse"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'locale.dernierAnneeDePaiement' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="4" placeholder="{{'locale.dernierAnneeDePaiement' | translate}}" [(ngModel)]="item.dernierAnneeDePaiement"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="5">{{'locale.dernierTrimestre' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="5" placeholder="{{'locale.dernierTrimestre' | translate}}" [(ngModel)]="item.dernierTrimestre"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="6">{{'locale.superficie' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="6" placeholder="{{'locale.superficie' | translate}}" [(ngModel)]="item.superficie"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="7">{{'locale.rue' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="rues" [(ngModel)]="item.rue" id="7" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'locale.rue' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateRue('Rue')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                            <div class="field col-11 md:col-6">
+                                                <label for="8">{{'locale.categorieLocale' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="categorieLocales" [(ngModel)]="item.categorieLocale" id="8" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'locale.categorieLocale' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-flexbox">
+
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="save()"></button>
+
+
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+
+
+                </div>
+            </ng-template>
+
+    </p-dialog>

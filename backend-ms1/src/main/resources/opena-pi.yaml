@@ -1,0 +1,340 @@
+openapi: 3.0.3
+info:
+  title: Title
+  description: Title
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /rues:
+    get:
+      summary: List all rues
+      operationId: listRues
+      tags:
+        - rues
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of rues
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Rues'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a rue
+      operationId: createRues
+      tags:
+        - rues
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /rues/{rueId}:
+    get:
+      summary: Info for a specific rue
+      operationId: showRueById
+      tags:
+        - rues
+      parameters:
+        - name: rueId
+          in: path
+          required: true
+          description: The id of the rue to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Rues'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /quartiers:
+    get:
+      summary: List all quartiers
+      operationId: listQuartiers
+      tags:
+        - quartiers
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of quartiers
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Quartiers'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a quartier
+      operationId: createQuartiers
+      tags:
+        - quartiers
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /quartiers/{quartierId}:
+    get:
+      summary: Info for a specific quartier
+      operationId: showQuartierById
+      tags:
+        - quartiers
+      parameters:
+        - name: quartierId
+          in: path
+          required: true
+          description: The id of the quartier to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Quartiers'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locales:
+    get:
+      summary: List all locales
+      operationId: listLocales
+      tags:
+        - locales
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of locales
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Locales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a locale
+      operationId: createLocales
+      tags:
+        - locales
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locales/{localeId}:
+    get:
+      summary: Info for a specific locale
+      operationId: showLocaleById
+      tags:
+        - locales
+      parameters:
+        - name: localeId
+          in: path
+          required: true
+          description: The id of the locale to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Locales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /categorieLocales:
+    get:
+      summary: List all categorieLocales
+      operationId: listCategorieLocales
+      tags:
+        - categorieLocales
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of categorieLocales
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/CategorieLocales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a categorieLocale
+      operationId: createCategorieLocales
+      tags:
+        - categorieLocales
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /categorieLocales/{categorieLocaleId}:
+    get:
+      summary: Info for a specific categorieLocale
+      operationId: showCategorieLocaleById
+      tags:
+        - categorieLocales
+      parameters:
+        - name: categorieLocaleId
+          in: path
+          required: true
+          description: The id of the categorieLocale to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/CategorieLocales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+
+
+definitions:
+  Rue:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  Rues:
+    type: array
+    items:
+      $ref: '#/definitions/Rue'
+  Quartier:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  Quartiers:
+    type: array
+    items:
+      $ref: '#/definitions/Quartier'
+  Locale:
+    type: "object"
+    required:
+      - id
+      - ref
+      - libelle
+      - complementAdresse
+      - dernierAnneeDePaiement
+      - dernierTrimestre
+      - superficie
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      libelle:
+        type: string
+      complementAdresse:
+        type: string
+      dernierAnneeDePaiement:
+        type: int
+      dernierTrimestre:
+        type: int
+      superficie:
+        type: number
+  Locales:
+    type: array
+    items:
+      $ref: '#/definitions/Locale'
+  CategorieLocale:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  CategorieLocales:
+    type: array
+    items:
+      $ref: '#/definitions/CategorieLocale'
+
+  Error:
+    type: "object"
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

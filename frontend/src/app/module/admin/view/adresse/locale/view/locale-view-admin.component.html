@@ -1,0 +1,56 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'locale.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'locale.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'locale.ref' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'locale.ref' | translate}}" autofocus  id="1" [(ngModel)]="item.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'locale.libelle' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'locale.libelle' | translate}}" autofocus  id="2" [(ngModel)]="item.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'locale.complementAdresse' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'locale.complementAdresse' | translate}}" autofocus  id="3" [(ngModel)]="item.complementAdresse">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'locale.dernierAnneeDePaiement' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="4" [disabled]="true" placeholder="{{'locale.dernierAnneeDePaiement' | translate}}" [(ngModel)]="item.dernierAnneeDePaiement"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'locale.dernierTrimestre' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="5" [disabled]="true" placeholder="{{'locale.dernierTrimestre' | translate}}" [(ngModel)]="item.dernierTrimestre"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'locale.superficie' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="6" [disabled]="true" placeholder="{{'locale.superficie' | translate}}" [(ngModel)]="item.superficie"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'locale.rue' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'locale.rue' | translate}}" autofocus  id="7" [(ngModel)]="item.rue.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="8">{{'locale.categorieLocale' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'locale.categorieLocale' | translate}}" autofocus  id="8" [(ngModel)]="item.categorieLocale.libelle">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+
